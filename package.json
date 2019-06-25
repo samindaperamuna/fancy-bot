@@ -1,0 +1,28 @@
+{
+  "name": "fancy-bot",
+  "displayName": "Fancy Bot",
+  "version": "1.0.0",
+  "description": "A fancy Discord bot.",
+  "main": "app.js",
+  "scripts": {
+    "test": "app"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/samindaperamuna/fancy-bot.git"
+  },
+  "keywords": [
+    "Discord",
+    "bot"
+  ],
+  "author": "Saminda Peramuna",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/samindaperamuna/fancy-bot/issues"
+  },
+  "homepage": "https://github.com/samindaperamuna/fancy-bot#readme",
+  "dependencies": {
+    "discord.js": "^11.5.1",
+    "giphy-js-sdk-core": "^1.0.6"
+  }
+}

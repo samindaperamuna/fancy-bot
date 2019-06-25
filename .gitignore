@@ -1,0 +1,9 @@
+# Node modules directories.
+node_modules/
+
+# Contains the tokens and other sensitive information.
+config.json
+
+# Editor related functions.
+discord_bot.code-workspace
+.vscode/
