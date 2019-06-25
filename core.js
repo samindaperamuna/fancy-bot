@@ -23,13 +23,15 @@ module.exports = {
                 return message.channel.send(quoteText(`Member '${commands[1]}' not found.`));
             }
 
-            // If the member exists, kick the member.
+            // If the member exists, check the kickable status.
+            if (!member.kickable) {
+                return message.channel.send(quoteText('This member is not kickable.'));
+            }
 
+            // If kickable, kick the member.
             member.kick().then(member => {
                 // Search giphy.
-                giphy.search('gifs', { 'q': 'fail' }).then(response => {
-                    console.log(response);
-
+                giphy.search('gifs', { "q": "fails" }).then(response => {
                     let totalResponses = response.data.length;
                     let responseIndex = Math.floor((Math.random() * 10) + 1) % totalResponses;
                     let responseFinal = response.data[responseIndex];
@@ -44,7 +46,7 @@ module.exports = {
                 console.log(error);
             });
         } else {
-            message.channel.send(`${message.member} You don't have the necessary permissions`);
+            message.channel.send(`${message.member} You don't have the necessary permissions.`);
         }
 
         return null;
