@@ -7,9 +7,32 @@ const giphy = GphApiClient(giphyToken);
 module.exports = {
 
     /**
+     * Clear the given amount of messages from the channel.
+     * 
+     * @param {*} message Message object from the client.
+     * @param {string} commands Commands array.
+     * @returns {null} null
+     */
+    clearMessages: (message, commands) => {
+        // Verify user permissions.
+        if (message.member.hasPermission(['MANAGE_MESSAGES'])) {
+            // Check whether the second parameter is a number.
+            if (isNaN(commands[1])) {
+                return message.channel.send('No of messages needs to be a number.');
+            }
+
+            message.channel.bulkDelete(commands[1]);
+        } else {
+            message.channel.send(`${message.member} You don't have the necessary permissions.`);
+        }
+
+        return null;
+    },
+
+    /**
      * Process the kick command using the message object.
      * 
-     * @param {message} message Message object from the client.
+     * @param {*} message Message object from the client.
      * @param {string} commands Commands array.
      * @returns {null} null 
      */

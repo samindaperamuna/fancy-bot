@@ -1,6 +1,6 @@
 
 const { quoteText } = require('./util');
-const { kickMember } = require('./core');
+const { clearMessages, kickMember } = require('./core');
 const { displayName, version } = require('./package.json');
 
 const Discord = require('discord.js');
@@ -35,6 +35,17 @@ client.on('message', message => {
                 message.channel.send(quoteText('Usage : !kick <username>'));
             }
 
+            break;
+        case "clear":
+            if (commands[1]) {
+                if (isNaN(commands[1])) {
+                    message.channel.send(quoteText('Number of messages needs to be a number.'));
+                } else {
+                    clearMessages(message, commands);
+                }
+            } else {
+                message.channel.send(quoteText('Usage : !clear <number-of-messages>'));
+            }
             break;
     }
 });
